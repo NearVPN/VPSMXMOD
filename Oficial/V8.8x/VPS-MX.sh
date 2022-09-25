@@ -378,7 +378,7 @@ fi
 
 }  
 function_verify () {
-  permited=$(curl -sSL "https://www.dropbox.com/s/4wat8o2kfomw3gv/control")
+  permited=$(curl -sSL "https://raw.githubusercontent.com/NearVPN/Control/master/Control-IP")
   [[ $(echo $permited|grep "${IP}") = "" ]] && {
   clear
   echo -e "\n\n\n\033[1;91m————————————————————————————————————————————————————\n      ¡ESTA KEY NO CONCUERDA CON EL INSTALADOR! \n      BOT: @NearVPS_bot \n————————————————————————————————————————————————————\n\n\n"
@@ -453,27 +453,27 @@ service ssh restart &>/dev/null
 #exit
 }
 ofus () {
-unset server
-server=$(echo ${txt_ofuscatw}|cut -d':' -f1)
-unset txtofus
-number=$(expr length $1)
-for((i=1; i<$number+1; i++)); do
-txt[$i]=$(echo "$1" | cut -b $i)
-case ${txt[$i]} in
-".")txt[$i]="C";;
-"C")txt[$i]=".";;
-"3")txt[$i]="@";;
-"@")txt[$i]="3";;
-"4")txt[$i]="9";;
-"9")txt[$i]="4";;
-"6")txt[$i]="P";;
-"P")txt[$i]="6";;
-"L")txt[$i]="K";;
-"K")txt[$i]="L";;
-esac
-txtofus+="${txt[$i]}"
-done
-echo "$txtofus" | rev
+	unset server
+	server=$(echo ${txt_ofuscatw}|cut -d':' -f1)
+	unset txtofus
+	number=$(expr length $1)
+	for((i=1; i<$number+1; i++)); do
+		txt[$i]=$(echo "$1" | cut -b $i)
+		case ${txt[$i]} in
+			".")txt[$i]="*";;
+			"*")txt[$i]=".";;
+			"1")txt[$i]="@";;
+			"@")txt[$i]="1";;
+			"2")txt[$i]="?";;
+			"?")txt[$i]="2";;
+			"4")txt[$i]="%";;
+			"%")txt[$i]="4";;
+			"-")txt[$i]="K";;
+			"K")txt[$i]="-";;
+		esac
+		txtofus+="${txt[$i]}"
+	done
+	echo "$txtofus" | rev
 }
 verificar_arq () {
 [[ ! -d ${SCPdir} ]] && mkdir ${SCPdir}
